@@ -15,12 +15,12 @@
         {{#ifequal item.id 'science'}}{{#ifsciencedetail}} aria-current="page" {{/ifsciencedetail}}{{/ifequal}}
         {{#ifequal item.id 'blog'}}{{#ifblogdetail}} aria-current="page" {{/ifblogdetail}}{{/ifequal}}
         {{/unless}}
-        >
+        aria-label="{{title}}">
         {{#unless item.icon}}
         {{item.title}}
         {{/unless}}
         {{#if item.icon}}
-        <svg xmlns="http://www.w3.org/2000/svg" width="{{item.width}}" height="{{item.height}}"  class="bi bi-{{item.icon}}" viewBox="{{item.viewbox}}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="{{item.width}}" height="{{item.height}}"  class="bi bi-{{item.icon}}" viewBox="{{item.viewbox}}" >
             <path d="{{item.svg}}"/>
         </svg>
         {{/if}}
