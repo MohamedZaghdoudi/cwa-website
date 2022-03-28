@@ -59,7 +59,7 @@
 			<div class="analyseRangePicker">
 				<button class="btn analyseRangePicker-btn ">
 					<span>&nbsp;</span>
-					<img src="{{root}}assets/img/icons/down.svg">
+					<img src="{{root}}assets/img/icons/down.svg" alt="downIcon">
 				</button>
 				<div class="analyseRangePicker-layer">
 					{{#if page-contents.range.picker.inputs}}
@@ -107,7 +107,7 @@
 			</div>
 
 
-			<input type="radio" name="analyseRange" class="analyseRangeCustom" value="">
+			<input type="radio" name="analyseRange" class="analyseRangeCustom" value="none">
 
 			{{#each page-contents.range.radio}}
 				<label class="analyseRangeRadio {{#if active}}first{{/if}}" for="radio_{{value}}">

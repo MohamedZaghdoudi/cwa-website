@@ -24,11 +24,11 @@
       <div class="input-group mb-2">
         <div id="clean_search" class="input-group w-50">
           <div class="input-group">
-            <input type="text" class="form-control mr-3" placeholder="{{page-contents.section-main.texts.search-placeholder}}" id="faq-search" name="search">
+            <input type="text" class="form-control mr-3" placeholder="{{page-contents.section-main.texts.search-placeholder}}" id="faq-search" name="search" aria-label="search-field">
             <span class="d-none clean-search">×</span>
           </div>
         </div>
-        <select class="form-select mr-3 w-25" id="faq-topic" name="topic">
+        <select class="form-select mr-3 w-25" id="faq-topic" name="topic" aria-label="select-topic">
           <option value="all" selected>{{page-contents.section-main.texts.all-topics}}</option>
           {{#each page-contents.section-main.topics}}
             <option value="{{id}}">{{{title}}}</option>
@@ -36,7 +36,7 @@
           <option value="glossary">{{page-contents.section-main.texts.glossary}}</option>
         </select>
         <button id="faq-submit" value="search" class="btn btn-primary">{{page-contents.section-main.texts.search-button}}</button>
-        <div class="filterUse"><img src="../../../assets/img/icons/info.svg"><span>{{page-contents.section-main.texts.info-filteruse}}</span></div>
+        <div class="filterUse"><img src="../../../assets/img/icons/info.svg" alt="info"><span>{{page-contents.section-main.texts.info-filteruse}}</span></div>
       </div>
     </form>
     <div id="no_results" class="d-none">
@@ -70,8 +70,8 @@
         <div>
           <h1 id="{{id}}" class="topic-title mb-4">{{{title}}}</h1>
           {{#each sections}}
-            <div id="{{id}}" class="section-container">     
-              <h3 class="section-title" id="{{id}}">{{{title}}}</h3>
+            <div id="{{id}}" class="section-container">
+              <h3 class="section-title" id="{{id}}_headline">{{{title}}}</h3>
               <dl class="accordion-faq js-accordion" data-toggle="accordion-faq-header">
                 {{#each accordion}}
                   {{#if duplicate}} <div id="{{duplicate}}_dup_{{../id}}-div" class="faq">
