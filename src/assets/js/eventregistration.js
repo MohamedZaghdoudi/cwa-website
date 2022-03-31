@@ -88,6 +88,7 @@ document.getElementById('generateQR').addEventListener('click', async function (
     let endtime = document.getElementById('endtime-time').value;
 
     let canvas = document.getElementById('eventqrcode');
+    let qrText = document.getElementById('eventqrtext');
     let ctx = canvas.getContext('2d');
     
     const qr = await GenerateQRCode(grid, description.replace(/\s+/g, ' '), address.replace(/\s+/g, ' '), defaultcheckinlengthMinutes, locationtype, startdate, enddate, starttime, endtime, false, defaultcheckinlengthHours);
@@ -96,6 +97,8 @@ document.getElementById('generateQR').addEventListener('click', async function (
     canvas.width = 1654;
     canvas.height = 2339;
     canvas.style.maxWidth = "100%"
+
+
 
     ctx.drawImage(qr, 0, 0);
 
@@ -163,10 +166,51 @@ document.getElementById('printCode').addEventListener('click', function (e) {
     orientation: portrait ? "portrait" : "landscape",
   });
   doc.addImage(document.getElementById('eventqrcode').toDataURL("image/png"), 'PNG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight(), "", 'FAST');
-  doc.autoPrint();
+
+  let description = document.getElementById('description').value;
+  let address = document.getElementById('address').value;
+  let title = ["CHECKEN SIE EIN.", "STOPPEN SIE DAS VIRUS."]
+  let body = ["Nutzen Sie die Corona-Warn-App! Scannen Sie den QR-Code und tragen", "Sie aktiv dazu bei, mögliche Infektionsketten schnell und effektiv", "zu durchbrechen."]
+
+  let pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
+  let ParaWidth = pageWidth*0.85; /* para width will 85% of the page width. */
+  let ParaWidth2 = pageWidth*0.87;
+  let LeftMargin = (pageWidth-ParaWidth2);/* Left margin will be half of the remaining space*/
+  let TopMargin =  185; /*According to your requirement*/
+  let TopMargin2 = 195;
+  let TopMargin3 = 209;
+  let TopMargin4 = 233;
+  let lines = doc.splitTextToSize(description, ParaWidth2);
+  let lines2 = doc.splitTextToSize(address, ParaWidth2);
+  let lines3 = doc.splitTextToSize(title, ParaWidth2);
+
+
+  doc.setTextColor('#000000');
+  doc.setFontSize(24)
+  doc.setLineHeightFactor(1);
+  doc.text(LeftMargin, TopMargin , lines);
+
+
+  doc.setTextColor('#000000');
+  doc.setFontSize(24)
+  doc.setLineHeightFactor(1);
+  doc.text(LeftMargin, TopMargin2 , lines2);
+
+  doc.setFontSize(26);
+  doc.setLineHeightFactor(1.3);
+  doc.setFont('Arial','bold');
+  doc.setTextColor('#007099');
+  doc.text(LeftMargin, TopMargin3 , lines3);
+
+  doc.setFontSize(14);
+  doc.setFont('Arial','normal');
+  doc.setLineHeightFactor(1.5);
+  doc.setTextColor('#404040');
+  doc.text(body, LeftMargin, TopMargin4);
+
   let blob = doc.output("blob");
   window.open(URL.createObjectURL(blob), '_blank');
-
+  window.open(URL.createObjectURL(blob), '_blank');
 });
 
 document.getElementById('downloadMultiCode').addEventListener('click', function (e) {
@@ -506,7 +550,7 @@ function PrintLayout() {
     row = grid[1];
 
     let canvas = document.getElementById("eventqrcode");
-    let ctx = canvas.getContext('2d');
+
 
     let resolution = Math.sqrt(col * row) / 2;
     let width = 1654 * resolution;
