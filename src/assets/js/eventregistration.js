@@ -173,40 +173,40 @@ document.getElementById('printCode').addEventListener('click', function (e) {
   let body = ["Nutzen Sie die Corona-Warn-App! Scannen Sie den QR-Code und tragen", "Sie aktiv dazu bei, mögliche Infektionsketten schnell und effektiv", "zu durchbrechen."]
 
   let pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
-  let ParaWidth = pageWidth*0.85; /* para width will 85% of the page width. */
+  let ParaWidth = pageWidth*0.85;
   let ParaWidth2 = pageWidth*0.87;
-  let LeftMargin = (pageWidth-ParaWidth2);/* Left margin will be half of the remaining space*/
-  let TopMargin =  185; /*According to your requirement*/
-  let TopMargin2 = 195;
-  let TopMargin3 = 209;
-  let TopMargin4 = 233;
-  let lines = doc.splitTextToSize(description, ParaWidth2);
-  let lines2 = doc.splitTextToSize(address, ParaWidth2);
-  let lines3 = doc.splitTextToSize(title, ParaWidth2);
+  let LeftMargin = (pageWidth-ParaWidth2);
+  let TopMarginDescription =  185;
+  let TopMarginAddress = 195;
+  let TopMarginTitle = 209;
+  let TopMarginBody = 233;
+  let linesDescription = doc.splitTextToSize(description, ParaWidth2);
+  let linesAddress = doc.splitTextToSize(address, ParaWidth2);
+  let linesTitle = doc.splitTextToSize(title, ParaWidth2);
 
 
   doc.setTextColor('#000000');
   doc.setFontSize(24)
   doc.setLineHeightFactor(1);
-  doc.text(LeftMargin, TopMargin , lines);
+  doc.text(LeftMargin, TopMarginDescription , linesDescription);
 
 
   doc.setTextColor('#000000');
   doc.setFontSize(24)
   doc.setLineHeightFactor(1);
-  doc.text(LeftMargin, TopMargin2 , lines2);
+  doc.text(LeftMargin, TopMarginAddress , linesAddress);
 
   doc.setFontSize(26);
   doc.setLineHeightFactor(1.3);
   doc.setFont('Arial','bold');
   doc.setTextColor('#007099');
-  doc.text(LeftMargin, TopMargin3 , lines3);
+  doc.text(LeftMargin, TopMarginTitle , linesTitle);
 
   doc.setFontSize(14);
   doc.setFont('Arial','normal');
   doc.setLineHeightFactor(1.5);
   doc.setTextColor('#404040');
-  doc.text(body, LeftMargin, TopMargin4);
+  doc.text(body, LeftMargin, TopMarginBody);
 
   let blob = doc.output("blob");
   window.open(URL.createObjectURL(blob), '_blank');
@@ -524,8 +524,8 @@ async function GenerateQRCode(grid, description, address, defaultcheckinlengthMi
         let fontSize = (30+parseInt(col))*2;
         ctx.font = fontSize+"px sans-serif";
         ctx.fillStyle = "black";
-        ctx.fillText(description, 225, 1460);
-        ctx.fillText(address, 225, 1460 + 50 + (fontSize/2));
+        /** ctx.fillText(description, 225, 1460);
+        /** ctx.fillText(address, 225, 1460 + 50 + (fontSize/2)); */
         if(list) QR_LIST.push(canvas)
         else resolve(canvas);
       });
