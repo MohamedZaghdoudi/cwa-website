@@ -746,5 +746,92 @@ export default {
 				}
 			]
 		}		
+	},
+	"chart4": {
+		"1": {
+			"series": [
+				{
+					ghost: true,
+					data: "ppa_total_warnings_cumulated"
+				},
+				{
+					color: "#FF6666",
+					data: "ppa_risk_red_cumulated"
+				},
+				{
+					color: "#50DBB4",
+					data: "ppa_risk_green_cumulated"
+				}
+			],
+			"stacked": true,
+			"type":"area",
+			"ghostTooltip": "ppa_total_warnings_cumulated"
+		},
+		"2": {
+			"series": [
+				{
+					ghost: true,
+					data: "ppa_total_warnings_daily"
+				},
+				{
+					color: "#FF6666",
+					data: "ppa_risk_red_daily"
+				},
+				{
+					color: "#50DBB4",
+					data: "ppa_risk_green_daily"
+				}
+			],
+			"stacked": true,
+			"type":"bar",
+			"ghostTooltip": "ppa_total_warnings_daily"
+		},
+		"3": {
+			"series": [
+				{
+					ghost: true,
+					data: "ppa_total_warnings_7days_sum"
+				},
+				{
+					color: "#FF6666",
+					data: "ppa_risk_red_7days_sum"
+				},
+				{
+					color: "#50DBB4",
+					data: "ppa_risk_green_7days_sum"
+				}
+			],
+			"stacked": true,
+			"type":"bar",
+			"ghostTooltip": "ppa_total_warnings_7days_sum"
+		},
+		"4": {
+			"series": [
+				{
+					ghost: true,
+					data: "ppa_total_warnings_7days_avg"
+				},
+				{
+					color: "#FF6666",
+					data: "ppa_risk_red_7days_avg"
+				},
+				{
+					color: "#50DBB4",
+					data: "ppa_risk_green_7days_avg"
+				},
+				{
+					ghost: true,
+					data: "ppa_total_warnings_daily"
+				},
+				{
+					color: "#FF6666",
+					data: "ppa_risk_red_daily"
+				},
+				{
+					color: "#50DBB4",
+					data: "ppa_risk_green_daily"
+				}
+			]
+		}		
 	}
 };
