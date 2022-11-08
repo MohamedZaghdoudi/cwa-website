@@ -3256,9 +3256,19 @@
                     "description": "Backups refer to versions of a project at a certain point in time in the past, which can later be used to restore a project to its previous state."
                 },
                 {
+                    "term": "Basic Immunization",
+                    "anchor": "basic_immunization",
+                    "description": "All people who have undergone the initial vaccination series are considered to have completed basic immunization. In the case of SARS-CoV-2, this generally comprises two vaccine doses, but only a single vaccine dose for those who have been proven to have recovered. Individuals who have already received additional doses of vaccination are also counted here. Complete basic immunization is not equivalent to complete vaccine protection."
+                },
+                {
                     "term": "Bluetooth-Low-Energy Technology (BLE)",
                     "anchor": "ble",
                     "description": "Bluetooth Low Energy (BLE) technology is a wireless standard that allows devices to be networked within a range of about 10 meters. The Corona-Warn-App uses this standard for risk detection. Compared to classic Bluetooth, BLE has a particularly low impact on battery power."
+                },
+                {
+                    "term": "Booster vaccination",
+                    "anchor": "booster_vaccination",
+                    "description": "Vaccinated people with a booster includes anyone who has received both their first and second vaccine dose plus at least one additional booster."
                 },
                 {
                     "term": "Business Rules",
